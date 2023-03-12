@@ -1,4 +1,4 @@
-version: '3'
+version: "3.9"
 services:
 
     organizr:
@@ -15,28 +15,6 @@ services:
         restart: always
         networks:
             - private 
-
-    transmission:
-        image: lscr.io/linuxserver/transmission:latest
-        container_name: transmission
-        environment:
-            - USER=$user #optional
-            - PASS=$pass #optional
-            - PUID=1000
-            - PGID=1000
-            - TZ=$tzone
-#           - TRANSMISSION_WEB_HOME=/transmission-web-control/ #alternative gui /transmission-web-control/ or /kettu/ or /combustion-release/
-        volumes:
-            - ${app_data}/transmission:/config
-            - ${media}/download:/downloads
-            - ${media}/download/watch:/watch
-        ports:
-            - 9091:9091
-            - 51413:51413
-            - 51413:51413/udp
-        restart: always
-        networks:
-            - private
 
     sonarr:
         image: linuxserver/sonarr:develop #ghcr.io/linuxserver/sonarr
@@ -143,21 +121,6 @@ services:
             - 5055:5055
         volumes:
             - ${app_data}/overseer:/app/config
-        restart: always
-        networks:
-            - private
-
-    tautully:
-        image: tautulli/tautulli:latest
-        container_name: tautully
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=$tzone
-        volumes:
-            - ${app_data}/tautully:/config
-        ports:
-            - 8181:8181
         restart: always
         networks:
             - private
