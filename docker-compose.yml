@@ -19,8 +19,6 @@ services:
     sonarr:
         image: linuxserver/sonarr:develop #ghcr.io/linuxserver/sonarr
         container_name: sonarr
-        depends_on:
-            - transmission
         environment:
             - PUID=1000
             - PGID=1000
@@ -38,8 +36,6 @@ services:
     radarr:
         image: ghcr.io/linuxserver/radarr:latest
         container_name: radarr
-        depends_on:
-            - transmission
         environment:
             - PUID=1000
             - PGID=1000
@@ -58,8 +54,6 @@ services:
     lidarr:
         image: ghcr.io/linuxserver/lidarr:latest
         container_name: lidarr
-        depends_on:
-            - transmission
         environment:
             - PUID=1000
             - PGID=1000
@@ -94,8 +88,6 @@ services:
     jackett:
         image: linuxserver/jackett:latest
         container_name: jackett
-        depends_on:
-            - transmission
         environment:
             - PUID=1000
             - PGID=1000
