@@ -100,6 +100,18 @@ services:
         restart: always
         networks:
             - private
+    
+    prowlarr:
+        image: lscr.io/linuxserver/prowlarr:develop
+        container_name: prowlarr
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=$tzone
+        volumes:
+            - ${app_data}/prowlarr:/config
+        restart: always
+        network_mode: host #9696
 
     overseerr:
         image: sctx/overseerr:latest
@@ -120,4 +132,3 @@ services:
 networks:
     private:
         external: true
-#            name: private
