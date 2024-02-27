@@ -136,7 +136,9 @@ services:
         image: nylonee/watchlistarr
         container_name: watchlistarr
         environment:
+            - SONARR_BASE_URL=$sonarr_url
             - SONARR_API_KEY=$sonarr_api
+            - RADARR_BASE_URL=$radarr_url
             - RADARR_API_KEY=$radarr_api
             - PLEX_TOKEN=$plex_token
             - PUID=1000
