@@ -144,6 +144,7 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=$tzone
+        restart: always
         volumes:
             - ${app_data}/watchlistarr:/app/config
 
