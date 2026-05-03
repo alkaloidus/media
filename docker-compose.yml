@@ -181,7 +181,7 @@ services:
 
     petio-mongo:
         image: mongo:4.4
-        container_name: mongo
+        container_name: petio-mongo
         #   entrypoint: ["db.adminCommand( { setFeatureCompatibilityVersion: "6.0" } )"]
         hostname: mongo
         ports:
