@@ -142,6 +142,23 @@ services:
         volumes:
             - ${app_data}/watchlistarr:/app/config
 
+    torrserver:
+        image: ghcr.io/yourok/torrserver:latest
+        container_name: torrserver
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=$tzone
+            - TS_DONTKILL=1
+            - TS_HTTPAUTH=0
+            - TS_CONF_PATH=/opt/ts/config
+            - TS_TORR_DIR=/opt/ts/torrents
+        volumes:
+            - ${app_data}/torrserver/CACHE:/opt/ts/torrents
+            - ${app_data}/torrserver/CONFIG:/opt/ts/config
+        restart: unless-stopped
+        network_mode: "host"
+
 networks:
     private:
         external: true
