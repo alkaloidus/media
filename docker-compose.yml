@@ -99,6 +99,23 @@ services:
         networks:
             - private
 
+    jackett:
+        image: lscr.io/linuxserver/jackett:latest
+        container_name: jackett
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=$tzone
+            - AUTO_UPDATE=true
+        volumes:
+            - ${app_data}/jackett:/config
+            - ${media}/download:/downloads
+        ports:
+            - 9117:9117
+        restart: always
+        networks:
+            - private
+
     overseerr:
         image: ghcr.io/seerr-team/seerr:latest
         init: true
